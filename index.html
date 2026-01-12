@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Palindrome Checker using Python</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f4f4;
+            margin: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        pre {
+            background: #1e1e1e;
+            color: #e6e6e6;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-size: 14px;
+        }
+        ul {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>🐍 Palindrome Checker</h1>
+<h2>Using Python (OOP & Polymorphism)</h2>
+
+<div class="container">
+
+<p>This program demonstrates:</p>
+<ul>
+    <li>Object-Oriented Programming (OOP)</li>
+    <li>Inheritance</li>
+    <li>Method overriding</li>
+    <li>Polymorphism</li>
+</ul>
+
+<pre>
+# Base class
+class PalindromeChecker:
+
+    def __init__(self, value):
+        self.value = value
+
+    def is_palindrome(self):
+        raise NotImplementedError("Subclass must implement this method")
+
+
+# Subclass for string palindrome check
+class StringPalindrome(PalindromeChecker):
+
+    def is_palindrome(self):
+        text = str(self.value).lower().replace(" ", "")
+        return text == text[::-1]
+
+
+# Subclass for integer palindrome check
+class IntegerPalindrome(PalindromeChecker):
+
+    def is_palindrome(self):
+        num_str = str(self.value)
+        return num_str == num_str[::-1]
+
+
+# --- Main Program ---
+user_input = input("Enter a string or number: ")
+
+if user_input.isdigit():
+    checker = IntegerPalindrome(int(user_input))
+else:
+    checker = StringPalindrome(user_input)
+
+if checker.is_palindrome():
+    print(f"{user_input} is a palindrome ✔")
+else:
+    print(f"{user_input} is not a palindrome ✖")
+</pre>
+
+</div>
+
+</body>
+</html>
